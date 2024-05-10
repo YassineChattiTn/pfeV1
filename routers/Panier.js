@@ -9,6 +9,7 @@ const {
   getPanier,
   getOnePanier,
   deletePanier,
+  updatePanier,
 } = require("../controllers/Panier");
 
 /**ajout du panier */
@@ -26,5 +27,9 @@ router.get("/getPanier/:id", isAuth, getOnePanier);
 /**effacer une panier */
 
 router.delete("/deletePanier/:id", isAuth, deletePanier);
+
+/**effacer une panier */
+
+router.put("/updatePanier/:id", isAuth, updatePanier);
 
 module.exports = router;

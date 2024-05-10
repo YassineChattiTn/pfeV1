@@ -2,44 +2,6 @@ const Panier = require("../models/Panier");
 const Article = require("../models/Article");
 const User = require("../models/User");
 
-/**creation du panier */
-
-// const addPanier = async (req, res) => {
-//   try {
-//     const {
-//       clientId,
-//       articleId,
-//       referencePanier,
-//       quantity,
-//       nameClient,
-//       nameArticle,
-//     } = req.body;
-//     article = await Article.findById(articleId);
-//     client = await User.findById(clientId);
-//     if (!article) {
-//       return res.status(404).send(error);
-//     }
-//     total = parseFloat(article.price) * quantity;
-//     nameA = article.name;
-//     nameC = client.name;
-//     const panier = new Panier({
-//       referencePanier,
-//       clientId,
-//       articleId,
-//       quantity,
-//       Total: total,
-//       nameClient: nameC,
-//       nameArticle: nameA,
-//     });
-//     savedPanier = await panier.save();
-//     res.status(200).send(savedPanier);
-//   } catch (error) {
-//     console.log(error);
-//     console.log("error while creating the panier");
-//     res.status(400).send(error);
-//   }
-// };
-
 /**afficher du panier */
 const getPanier = async (req, res) => {
   try {
@@ -51,6 +13,7 @@ const getPanier = async (req, res) => {
   }
 };
 
+/**ajout d'une panier */
 const addPanier = async (req, res) => {
   try {
     const { clientId, referencePanier, items } = req.body;
@@ -122,9 +85,23 @@ const deletePanier = async (req, res) => {
   }
 };
 
+/**modifie une panier */
+const updatePanier = async (req, res) => {
+  try {
+    const myId = req.params.id;
+    const data = req.body;
+    panier = await Panier.findByIdAndUpdate({ _id: myId }, data);
+    res.status(200).send(panier);
+  } catch (error) {
+    console.log(error);
+    console.log("error while getting panier");
+  }
+};
+
 module.exports = {
   addPanier,
   getPanier,
   getOnePanier,
   deletePanier,
+  updatePanier,
 };

@@ -26,6 +26,11 @@ const articleSchema = mongoose.Schema({
     required: [true, "Article must have a categorie"],
     trim: true,
   },
+  expediteur: {
+    type: String,
+    required: [true, "Article must have a expediteur"],
+    trim: true,
+  },
   image: {
     type: String,
     required: [true, "Article must have an image"],

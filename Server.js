@@ -5,8 +5,6 @@ require("./config/connect");
 
 const userRoute = require("./routers/User");
 
-const tableRoute = require("./routers/Table");
-
 const boutiqueRoute = require("./routers/Boutique");
 
 const articleRoute = require("./routers/Article");
@@ -16,6 +14,8 @@ const responsableRoute = require("./routers/Responsable");
 const panierRoute = require("./routers/Panier");
 
 const adminRoute = require("./routers/Admin");
+
+const commandeRoute = require("./routers/Commande");
 
 /**importation de dotenv */
 
@@ -33,8 +33,6 @@ app.use(express.json());
 
 app.use("/user", userRoute);
 
-app.use("/table", tableRoute);
-
 app.use("/boutique", boutiqueRoute);
 
 app.use("/article", articleRoute);
@@ -44,6 +42,8 @@ app.use("/responsable", responsableRoute);
 app.use("/panier", panierRoute);
 
 app.use("/admin", adminRoute);
+
+app.use("/commande", commandeRoute);
 
 /**declaration de port de serveur q'ons va l'utiliser */
 
